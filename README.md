@@ -27,3 +27,7 @@
 
 TEST BUILD IS NOT MADE TO RUN ON OTHER PC YET!!
 If you still somewhy need to run it, you'll need renpy's GUI installed on your pc.
+
+
+
+!! ALL CREDIT FOR MUSIC/IMAGES/SFX GOES FOR THEIR RESPECTIVE CREATORS !!
