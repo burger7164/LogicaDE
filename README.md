@@ -29,4 +29,4 @@ If you still somewhy need to run it, you'll need renpy's GUI installed on your p
 
 
 
-!! ALL CREDIT FOR MUSIC/IMAGES/SFX GOES FOR THEIR RESPECTIVE CREATORS !!
+!! ALL CREDIT FOR MUSIC/IMAGES/SFX GOES TO THEIR RESPECTIVE CREATORS !!
