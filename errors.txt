@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 252: expected a keyword argument, colon, or end of line.
+    text {b}"ВЫБОР УРОВНЯ"{/b} size 40 xalign 0.5
+            ^
+
+Ren'Py Version: Ren'Py 8.5.2.26010301
+Sun Feb 15 19:06:44 2026

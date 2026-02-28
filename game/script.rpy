@@ -56,6 +56,8 @@ default max_hints = renpy.random.randint(1, 3)
 default last_rest_level = 0
 default current_level = 1
 
+# ЗАГРУЗКА ИЗ ФАЙЛА
+
 init python:
     def load_levels_from_file():
         levels = {}
@@ -152,7 +154,7 @@ label important_choice:
         "Нет.":
             "Что ж.."
             window hide
-            $ show_dramatic_text("На этом ваше путешествие окончено...", 3.0, 60, 50)
+            $ show_dramatic_text("💀 На этом ваше путешествие окончено... 💀", 3.0, 60, 50)
             scene black with dissolve
             "Game over."
             return
@@ -161,7 +163,7 @@ label new_page:
     "Кажется, приземление прошло не очень удачно.."
     y "Где это я..?"
     play sound "rolling_paper.wav"
-    play audio "tutorial.wav"
+    play music "tutorial.mp3"
     scene bg map with dissolve
     
     v "Добро пожаловать на карту."
@@ -231,7 +233,7 @@ label check_map:
             v "...сейчас!"
             scene bg dungeon with dissolve
             "Чёрная пелена постепенно отступает, и к вам медленно возвращается зрение.."
-            stop music
+            # stop music
             jump explore
     return
 
@@ -247,20 +249,20 @@ screen level_selection():
         
         vbox:
             spacing 10
-            text "ВЫБОР УРОВНЯ" size 40 xalign 0.5
+            text "{b}ВЫБОР УРОВНЯ{/b}" size 40 xalign 0.5
             
             hbox:
                 spacing 50
-                textbutton "Открыто: [unlocked_levels]/25" action None
-                textbutton "Пройдено: [completed_levels]/25" action None
-                textbutton "Подсказки: [hints_used]/[max_hints]" action None
+                text "Открыто: [unlocked_levels]/25"
+                text "Пройдено: [completed_levels]/25"
+                text "Подсказки: [hints_used]/[max_hints]"
             
             if completed_levels - last_rest_level >= 5:
                 text "Можно отдохнуть!" color "#00FF00" xalign 0.5
             else:
-                text "До отдыха: [5 - (completed_levels - last_rest_level)] ур." color "#FFFF00" xalign 0.5
+                text "До отдыха: [5 - (completed_levels - last_rest_level)] ур." color "#000000" xalign 0.5
             
-            null height 20
+            null height -10
             
             textbutton "Вернуться в лагерь" action Jump("explore") xalign 0.5
     
@@ -280,11 +282,11 @@ screen level_selection():
                     button:
                         xsize 100
                         ysize 100
-                        background Solid("#666666", xsize=100, ysize=100)
-                        hover_background Solid("#888888", xsize=100, ysize=100)
+                        background Solid("#8a7341", xsize=100, ysize=100)
+                        hover_background Solid("#3c1f1480", xsize=100, ysize=100)
                         action NullAction()
                         
-                        text "[i]" size 36 color "#333333" xalign 0.5 yalign 0.5
+                        text "{b}[i]{/b}" size 36 color "#000000" xalign 0.5 yalign 0.5
                         
                 else:
                     button:
@@ -321,7 +323,7 @@ label game_over_hints:
     "Вы полагались на подсказки слишком часто..."
     "Ваши силы окончательно иссякли, и тьма поглотила вас."
     window hide
-    $ show_dramatic_text("СМЕРТЬ ОТ ИСТОЩЕНИЯ", 3.0, 60, 20)
+    $ show_dramatic_text("💀 СМЕРТЬ ОТ ИСТОЩЕНИЯ 💀", 3.0, 60, 20)
     "Game Over"
     return
 
