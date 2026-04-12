@@ -414,7 +414,7 @@ screen main_menu():
 
 
         if main_menu:
-            imagebutton auto "gui/main_menu/buttons/gallery_%s.png" xpos 820 ypos 569 focus_mask True action ShowMenu("galleryA")
+            imagebutton auto "gui/main_menu/buttons/gallery_%s.png" xpos 820 ypos 569 focus_mask True action Start(label='freemode')
 
         if _in_replay:
 
@@ -644,17 +644,18 @@ screen about():
         xmaximum 400
         text "[config.name!t]"
         text _("Version [config.version!t]\n")
-        text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+        text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].")
 
 
     vbox:
         xpos 0.55
         ypos 0.23
         xmaximum 400
-        text _("Credits:\n-{a=https://incompetech.filmmusic.io/song/4371-skye-cuillin/}Skye Cuillin{/a} by Kevin MacLeod\nLicense: {a=https://filmmusic.io/standard-license/}https://filmmusic.io/standard-license{/a}")
-        text _("\n-{a=https://incompetech.filmmusic.io/song/4467-teller-of-the-tales/}Teller of tales{/a} by Kevin MacLeod\nLicense: {a=https://filmmusic.io/standard-license/}https://filmmusic.io/standard-license{/a}")
+        text _("Credits:")
+        # text _("\n-{a=https://incompetech.filmmusic.io/song/4467-teller-of-the-tales/}Teller of tales{/a} by Kevin MacLeod\n-{a=https://incompetech.filmmusic.io/song/4371-skye-cuillin/}Skye Cuillin{/a} by Kevin MacLeod")
+        text  ("\n-Scripting and screenplay by {a=https://github.com/burger7164}IDK{/a} \n-Tasks and other stuff by {a=https://github.com/JaKilka}JaKilka{/a}")
 
-        text _("\nTemplate created by Skolaztika")
+        text _("\nSPECIAL THANKS TO:\n-{a=https://itch.io/profile/skolaztika}Skolaztika{/a} for creating GUI template\n-{a=https://t.me/nadinnart}NadyaArt{/a} for awesome arts and logo of this game :3")
 
 
 
@@ -887,7 +888,7 @@ screen history():
                         text "— " + h.who xalign 1.0 text_align 1.0
                     add "gui/abouthistory/divider.png" xalign 0.5
                 if not _history_list:
-                    label _("The dialogue history is empty.")
+                    label _("История диалога пуста.")
 
 
 
@@ -955,20 +956,17 @@ screen keyboard_help():
         ypos 0.23
         xmaximum 450
         vbox:
-            label _("Enter")
-            text _("Advances dialogue and activates the interface.")
-        vbox:
             label _("Space")
-            text _("Advances dialogue without selecting choices.")
+            text _("Взаимодействия с диалогом.")
         vbox:
             label _("Escape")
-            text _("Accesses the game menu.")
+            text _("Открыть меню.")
         vbox:
             label _("Ctrl")
-            text _("Skips dialogue while held down.")
+            text _("Пропускает диалог при удержании.")
         vbox:
             label _("Tab")
-            text _("Toggles dialogue skipping.")
+            text _("Включает авто-пропуск диалогов.")
 
 
 
@@ -979,19 +977,16 @@ screen keyboard_help():
         xmaximum 450
         vbox:
             label _("Page Up")
-            text _("Rolls back to earlier dialogue.")
+            text _("Вернуться к предыдущему диалогу.")
         vbox:
             label _("Page Down")
-            text _("Rolls forward to later dialogue.")
+            text _("К следующему диалогу.")
         vbox:
             label "H"
-            text _("Hides the user interface.")
-        vbox:
-            label "S"
-            text _("Takes a screenshot.")
+            text _("Спрятать интерфейс.")
         vbox:
             label "V"
-            text _("Toggles assistive {a=https://www.renpy.org/l/voicing}self-voicing{/a}.")
+            text _("{a=https://www.renpy.org/l/voicing}self-voicing{/a}.\n(Режим для Слабовидящих)")
 
 
 screen mouse_help():
@@ -1000,20 +995,26 @@ screen mouse_help():
         ypos 0.23
         xmaximum 450
         vbox:
-            label _("Left Click")
-            text _("Advances dialogue and activates the interface.")
+            label _("ЛКМ")
+            text _("Продолжение диалога / взаимодействие с интерфейсом.")
         vbox:
-            label _("Middle Click")
-            text _("Hides the user interface.")
+            label _("СКМ")
+            text _("Скрыть интерфейс.")
         vbox:
-            label _("Right Click")
-            text _("Accesses the game menu.")
+            label _("ПКМ")
+            text _("Открыть меню паузы.")
+
+    
+    vbox:
+        xpos 0.55
+        ypos 0.23
+        xmaximum 450
         vbox:
-            label _("Mouse Wheel Up\nClick Rollback Side")
-            text _("Rolls back to earlier dialogue.")
+            label _("Колесико мыши вверх\nClick Rollback Side")
+            text _("К предыдущему диалогу.")
         vbox:
-            label _("Mouse Wheel Down")
-            text _("Rolls forward to later dialogue.")
+            label _("колёсико мыши вниз.")
+            text _("К следующему диалогу.")
 
 screen gamepad_help():
     vbox:
@@ -1029,6 +1030,11 @@ screen gamepad_help():
         vbox:
             label _("Right Shoulder")
             text _("Rolls forward to later dialogue.")
+    
+    vbox:
+        xpos 0.55
+        ypos 0.23
+        xmaximum 450
         vbox:
             label _("D-Pad, Sticks")
             text _("Navigate the interface.")
@@ -1040,7 +1046,7 @@ screen gamepad_help():
 
     vbox:
         xpos 0.55
-        ypos 0.23
+        ypos 0.55
         xmaximum 450
         vbox:
             label _("Y/Top Button")
